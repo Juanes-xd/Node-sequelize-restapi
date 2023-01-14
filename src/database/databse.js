@@ -1,6 +1,13 @@
 import Sequelize from "sequelize";
+import { config } from "dotenv";
+config();
 
-export const sequelize = new Sequelize("projectdb", "postgres", "cr7juanes", {
-  host: "localhost",
-  dialect: "postgres",
-});
+export const sequelize = new Sequelize(
+  process.env.DB_DATABASE,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST,
+    dialect: "postgres",
+  }
+);
